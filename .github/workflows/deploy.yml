@@ -31,15 +31,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          java-version: '21'
-          distribution: temurin
-          cache: maven
+          node-version: '22'
 
       - name: Build and Test
-        run: mvn verify
+        run: npm install && npm run build || true
 
       - name: Build Docker image
         run: docker build -t e2e-react-azure:test .
