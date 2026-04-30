@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e2e-react-azure
+  namespace: sandbox-e2e-react-azure
+  labels:
+    app: e2e-react-azure
+    sandbox: e2e-react-azure
+    cost-center: "MC-100042"
+    tenant: mastercard
+  annotations:
+    mc/cost-center: "MC-100042"
+    mc/target-cloud: azure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e2e-react-azure
+  template:
+    metadata:
+      labels:
+        app: e2e-react-azure
+        tenant: mastercard
+    spec:
+      containers:
+        - name: app
+          image: IMAGE_PLACEHOLDER
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          readinessProbe:
+            httpGet: { path: /health, port: http }
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /health, port: http }
+            initialDelaySeconds: 10
+            periodSeconds: 30

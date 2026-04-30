@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: e2e-react-azure
+  title: E2e-react-azure
+  description: E2E test: React on Azure
+  annotations:
+    mc/cost-center: "MC-100042"
+    mc/target-cloud: azure
+    mc/budget-cap-usd: "1000"
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: MSBXDemo/e2e-react-azure
+  tags:
+    - react
+    - typescript
+    - frontend
+    - azure
+spec:
+  type: website
+  lifecycle: production
+  owner: group:default/platform-engineering

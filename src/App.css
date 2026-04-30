@@ -1,0 +1,25 @@
+.app {
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.app-header {
+  text-align: center;
+  padding: 2rem;
+}
+
+h1 {
+  color: #eb001b;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.meta {
+  color: #666;
+  font-size: 0.9rem;
+}
